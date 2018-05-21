@@ -16,6 +16,7 @@ The assembly for the Atari depends on my MADS include library here: https://gith
 ---
 
 **01 Paranoid**
+
 This draws a kaleidescope-like random patterns on the screen.
 
 Right now, this is just quick conversion of the BASIC source code from C64 BASIc to Atari BASIC.
