@@ -64,15 +64,15 @@
 
 140 R. 130 IFRND(1)>.9THENDY=INT(RND(1)*3-1)
 141 R. Y Random direction change.
-142 IF RND(0)>.9 THEN DY=INT(RND(1)*3-1)
+142 IF RND(0)>.9 THEN DY=INT(RND(0)*3-1)
 
 150 R. 135 IFDX<>0ORDY<>0THEN105
 151 R. If Deltas are non-zero, then go plot again.
 152 IF DX<>0 OR DY<>0 THEN GOTO 95
 
 160 R. 140 DX=INT(RND(1)*3-1):DY=INT(RND(1)*3-1):IFDX=0ANDDY=0THEN140
-161 R. They were 0, so try to update it again.  It has to work eventually.
-162 DX=INT(RND(1)*3-1):DY=INT(RND(1)*3-1):IF DX=0 AND DY=0 THEN GOTO 162
+161 R. They were 0, so try to update them again.  It has to work eventually.
+162 DX=INT(RND(0)*3-1):DY=INT(RND(0)*3-1):IF DX=0 AND DY=0 THEN GOTO 162
 
 170 R. 150 GOTO105
 171 R. Loop back to plot next group of points.
