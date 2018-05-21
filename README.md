@@ -19,11 +19,15 @@ The assembly for the Atari depends on my MADS include library here: https://gith
 
 This draws a kaleidescope-like random patterns on the screen.
 
-Right now, this is just quick conversion of the BASIC source code from C64 BASIc to Atari BASIC.
+WIP -- Right now, this is just quick conversion of the BASIC source code from C64 BASIc to Atari BASIC as text files.  This still needs to be cleaned up and presented as it would be listed from Atari BASIC.  After that, the next mission is to convert it to assembly. 
+
+The "commentary" file is the C64 BASIC program with each line commented, and followed by an explanation of what the line is doing, and then followed by the equivalent Atari commands if applicable.
+
+The regular file for the Atari is the same as the commentary with the C64 commands removed.
+
+The "stripped" file is the Atari version above with most of the extra commentary removed.
 
 There are several striking differences between the Atari BASIC version and the C64 BASIC versions of the same program. Atari BASIC comes with commands to support graphics, which makes the code much more readable, and shorter, not to mention it runs far faster even though Atari BASIC uses floating point numbers for everything.  Atari BASIC's tokenization allows spaces to delimit commands and variables without wasting memory which also contributes to source readability. 
-
-WIP -- At the moment the raw text source is present for Atari BASIC.   This needs to be cleaned up and presented as it would be listed from Atari BASIC.  After that, the next mission is to convert it to assembly. 
 
 ---
 
