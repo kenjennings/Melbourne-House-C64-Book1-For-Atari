@@ -1,0 +1,15 @@
+100 Graphics 8+16:Rem The +16 eliminates text window.
+105 Color 1:Rem And set the pixel drawing color.
+110 Setcolor 4,0,0:Rem Border black.
+115 Setcolor 2,0,15:Rem Background white
+120 Setcolor 1,0,0:Rem Drawn pixels black
+125 X=79:Y=49:Dx=Int(Rnd(0)*3-1):Dy=Int(Rnd(0)*3-1):If Dx=0 And Dy=0 Then Goto 125
+130 Plot X,Y:Plot 319-X,Y:Plot 319-X,191-Y:Plot X,191-Y
+135 Y1=Y*2:X1=X*2:Plot X1,Y1:Y1=191-Y1:X1=319-X1:Plot X1,Y1
+140 X=X+Dx:Y=Y+Dy:If X<0 Or X>159 Then Dx=-Dx:Goto 140
+145 If Y<0 Or Y>95 Then Dy=-Dy:Goto 140
+150 If Rnd(0)>0.9 Then Dx=Int(Rnd(0)*3-1)
+155 If Rnd(0)>0.9 Then Dy=Int(Rnd(1)*3-1)
+160 If Dx<>0 Or Dy<>0 Then Goto 130
+165 Dx=Int(Rnd(1)*3-1):Dy=Int(Rnd(1)*3-1):If Dx=0 And Dy=0 Then Goto 165
+170 Goto 130

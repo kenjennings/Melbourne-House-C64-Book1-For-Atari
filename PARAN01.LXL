@@ -1,0 +1,27 @@
+100 Graphics 8+16:Rem The +16 eliminates text window.
+105 Color 1:Rem And set the pixel drawing color.
+110 Setcolor 4,0,0:Rem Border black.
+115 Setcolor 2,0,15:Rem Background white
+120 Rem Note that Atari doesn't have color map.  The drawn pixel 
+125 Rem color is set by color register.  Here, set it to black:
+130 Setcolor 1,0,0
+135 Rem Initialize Delta variables. Redo if they both end up 0.
+140 X=79:Y=49:Dx=Int(Rnd(0)*3-1):Dy=Int(Rnd(0)*3-1):If Dx=0 And Dy=0 Then Goto 140
+145 Rem Plotting pixels.  
+150 Plot X,Y:Plot 319-X,Y:Plot 319-X,191-Y:Plot X,191-Y
+155 Rem More math and more plotting calls.
+160 Y1=Y*2:X1=X*2:Plot X1,Y1:Y1=191-Y1:X1=319-X1:Plot X1,Y1
+165 Rem Increment deltas and fix horizontal boundary collision.
+170 X=X+Dx:Y=Y+Dy:If X<0 Or X>159 Then Dx=-Dx:Goto 170
+175 Rem Fix vertical boundary collision 
+180 If Y<0 Or Y>95 Then Dy=-Dy:Goto 170
+185 Rem X Random direction change.
+190 If Rnd(0)>0.9 Then Dx=Int(Rnd(0)*3-1)
+195 Rem Y Random direction change.
+200 If Rnd(0)>0.9 Then Dy=Int(Rnd(0)*3-1)
+205 Rem If Deltas are non-zero, then go plot again.
+210 If Dx<>0 Or Dy<>0 Then Goto 150
+215 Rem They were 0, so try to update them again.  It has to work eventually.
+220 Dx=Int(Rnd(0)*3-1):Dy=Int(Rnd(0)*3-1):If Dx=0 And Dy=0 Then Goto 220
+225 Rem Loop back to plot next group of points.
+230 Goto 150

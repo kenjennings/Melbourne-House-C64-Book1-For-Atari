@@ -18,10 +18,11 @@
 131 R. X Random direction change.
 132 IF RND(0)>.9 THEN DX=INT(RND(0)*3-1)
 141 R. Y Random direction change.
-142 IF RND(0)>.9 THEN DY=INT(RND(1)*3-1)
+142 IF RND(0)>.9 THEN DY=INT(RND(0)*3-1)
 151 R. If Deltas are non-zero, then go plot again.
 152 IF DX<>0 OR DY<>0 THEN GOTO 95
-161 R. They were 0, so try to update it again.  It has to work eventually.
-162 DX=INT(RND(1)*3-1):DY=INT(RND(1)*3-1):IF DX=0 AND DY=0 THEN GOTO 162
+161 R. They were 0, so try to update them again.  It has to work eventually.
+162 DX=INT(RND(0)*3-1):DY=INT(RND(0)*3-1):IF DX=0 AND DY=0 THEN GOTO 162
 171 R. Loop back to plot next group of points.
 172 GOTO 95
+
