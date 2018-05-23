@@ -19,7 +19,7 @@ File naming...
 
 **PORTING**
 
-The text of the BASIC files have several versions.  These are edited text that have not yet been entered into Atari BASIC.  REMark and several other commands are presented in their abbreviated form (e.g. R. and PL. for REM and PLOT, etc.) These are Work In Progress files to figure out what the code is doing, and determine the Atari equivalents...
+The **".bas"** text of the BASIC files have several versions.  These are plain text that has not yet been entered into Atari BASIC.  Commands may be present in their abbreviated form (e.g. R. and PL. for REM and PLOT, etc.) These are Work In Progress files to figure out what the code is doing, and determine the Atari equivalents...
 
 - The "commentary" file is the C64 BASIC program with each line commented, and followed by an explanation of what the line is doing, and then followed by the equivalent Atari commands if applicable.
 
@@ -31,17 +31,17 @@ The text of the BASIC files have several versions.  These are edited text that h
 
 Other files have been run through Atari BASIC and these files are the text listing from BASIC.
 
-- ".LIS" files are listed from Atari BASIC.  They should be the working equivalent of the "commentary" text files with all the comments.
+- **".LIS"** files are listed from Atari BASIC.  They should be the working equivalent of the "commentary" text files with all the comments.
  
-- ".LXL" files are listed from the nicer OSS BASIC XL which is 100% compatible with Atari BASIC and includes extra commands and other friendly niceties such as upper/lower case formatted keywords.   The contents of the ".LXL" files have the C64-specific code removed, the lines are renumbered, formatting/line lengths may be revised, and logic improvements may be present.
+- **".LXL"** files are listed from the nicer OSS BASIC XL which is 100% compatible with Atari BASIC and includes extra commands and other friendly niceties such as upper/lower case formatted keywords.   The contents of the ".LXL" files have the C64-specific code removed, the lines are renumbered, formatting/line lengths may be revised, and logic improvements may be present.
 
 **Atari Assembly**
 
-The assembly files have several versions, too:
+The **".asm"** assembly files have several versions, too:
 
-- The "C64andAt8" file is the original ported version with C64-specific code commented out where it occurs, and followed by the equivalent Atari assembly.
+- The **"C64andAt8"** file is the original ported version with C64-specific code commented out where it occurs, and followed by the equivalent Atari assembly.
 
-- The "At8" version is the "C64andAt8" version with the commented C64 code removed.
+- The **"At8"** version is the "C64andAt8" version with the commented C64 code removed.
 
 ---
 
