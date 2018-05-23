@@ -21,11 +21,11 @@ File naming...
 
 The **".bas"** text of the BASIC files have several versions.  These are plain text that has not yet been entered into Atari BASIC.  Commands may be present in their abbreviated form (e.g. R. and PL. for REM and PLOT, etc.) These are Work In Progress files to figure out what the code is doing, and determine the Atari equivalents, so it is possible they can't be ENTER'ed into Atari BASIC...
 
-- The "commentary" file is the C64 BASIC program with each line commented, and followed by an explanation of what the line is doing, and then followed by the equivalent Atari commands if applicable.
+- The **"At8_commentary"** file is the C64 BASIC program with each line commented, and followed by an explanation of what the line is doing, and then followed by the equivalent Atari commands if applicable.
 
-- The regular file for the Atari is the same as the commentary file with the C64 commands removed.
+- The **"At8"** file for the Atari is the same as the commentary file with the C64 commands removed.
 
-- The "stripped" file is the Atari version above with most of the extra commentary removed.
+- The **"At8_stripped"** file is the Atari version above with most of the extra commentary removed, so it resembles the original C64 code, but works for Atari.
 
 **Atari BASIC**
 
@@ -39,9 +39,9 @@ Other files have been run through Atari BASIC and these files are the text listi
 
 The **".asm"** assembly files have several versions, too:
 
-- The **"C64andAt8"** file is the original ported version with C64-specific code commented out where it occurs, and followed by the equivalent Atari assembly.
+- The **"C64andAt8"** file is the original ported version with C64-specific code commented out where it occurs and followed by the equivalent Atari assembly.
 
-- The **"At8"** version is the "C64andAt8" version with the commented C64 code removed.
+- The **"At8"** version is the "C64andAt8" version with the commented C64 code removed leaving only the Atari-specific code.
 
 ---
 
