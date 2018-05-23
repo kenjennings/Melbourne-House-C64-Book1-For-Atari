@@ -31,9 +31,9 @@ The text of the BASIC files have several versions.  These are edited text that h
 
 Other files have been run through Atari BASIC and are the text output of listings from BASIC.
 
-- ".LIS" files are listed from Atari BASIC.  
+- ".LIS" files are listed from Atari BASIC.  They should be the working equivalent of the "commentary" text files with all the comments.  
  
-- ".LXL" files are listed from the nicer OSS BASIC XL which is 100% compatible with Atari BASIC and includes extra commands and other friendly niceties such as upper/lower case formatted keywords.   
+- ".LXL" files are listed from the nicer OSS BASIC XL which is 100% compatible with Atari BASIC and includes extra commands and other friendly niceties such as upper/lower case formatted keywords.   The contents of the ".LXL" files have the C64-specific code removed, the lines are renumbered, formatting/line lengths may be revised, and logic improvements may be present.
 
 **Atari Assembly**
 
