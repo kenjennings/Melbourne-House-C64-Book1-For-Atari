@@ -15,11 +15,11 @@ The assembly for the Atari depends on my MADS include library here: https://gith
 
 ---
 
-File naming...   Still deciding what BASIC files to keep for presentation. There is a lot of flotsam in the file lists.  Some of this would go away when I think up a standard.
+File naming...   
 
 **PORTING**
 
-The text of the BASIC files have several versions.  These are edited text that have not yet been entered into Atari BASIC.  REMark and several other commands are presented in their abbreviated form (e.g. R. and PL. for REM and PLOT, etc.):
+The text of the BASIC files have several versions.  These are edited text that have not yet been entered into Atari BASIC.  REMark and several other commands are presented in their abbreviated form (e.g. R. and PL. for REM and PLOT, etc.) These are Work In Progress files to figure out what the code is doing, and determine the Atari equivalents...
 
 - The "commentary" file is the C64 BASIC program with each line commented, and followed by an explanation of what the line is doing, and then followed by the equivalent Atari commands if applicable.
 
@@ -29,9 +29,9 @@ The text of the BASIC files have several versions.  These are edited text that h
 
 **Atari BASIC**
 
-Other files have been run through Atari BASIC and are the text output of listings from BASIC.
+Other files have been run through Atari BASIC and these files are the text listing from BASIC.
 
-- ".LIS" files are listed from Atari BASIC.  They should be the working equivalent of the "commentary" text files with all the comments.  
+- ".LIS" files are listed from Atari BASIC.  They should be the working equivalent of the "commentary" text files with all the comments.
  
 - ".LXL" files are listed from the nicer OSS BASIC XL which is 100% compatible with Atari BASIC and includes extra commands and other friendly niceties such as upper/lower case formatted keywords.   The contents of the ".LXL" files have the C64-specific code removed, the lines are renumbered, formatting/line lengths may be revised, and logic improvements may be present.
 
