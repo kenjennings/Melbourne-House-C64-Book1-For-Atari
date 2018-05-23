@@ -18,6 +18,7 @@ The assembly for the Atari depends on my MADS include library here: https://gith
 File naming...   Still deciding what BASIC files to keep for presentation. There is a lot of flotsam in the file lists.  Some of this would go away when I think up a standard.
 
 **PORTING**
+
 The text of the BASIC files have several versions.  These are edited text that have not yet been entered into Atari BASIC.  REMark and several other commands are presented in their abbreviated form (e.g. R. and PL. for REM and PLOT, etc.):
 
 - The "commentary" file is the C64 BASIC program with each line commented, and followed by an explanation of what the line is doing, and then followed by the equivalent Atari commands if applicable.
@@ -26,7 +27,7 @@ The text of the BASIC files have several versions.  These are edited text that h
 
 - The "stripped" file is the Atari version above with most of the extra commentary removed.
 
-**BASIC**
+**Atari BASIC**
 
 Other files have been run through Atari BASIC and are the text output of listings from BASIC.
 
@@ -34,7 +35,7 @@ Other files have been run through Atari BASIC and are the text output of listing
  
 - ".LXL" files are listed from the nicer OSS BASIC XL which is 100% compatible with Atari BASIC and includes extra commands and other friendly niceties such as upper/lower case formatted keywords.   
 
-**Assembly**
+**Atari Assembly**
 
 The assembly files have several versions, too:
 
