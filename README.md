@@ -1,13 +1,13 @@
 # Melbourne-House-C64-Book1-For-Atari
-Porting the C64 code from the Melbourne House C64 Book 1 to the Atari
+Work In Progress -- Porting the C64 code from the Melbourne House C64 Book 1 to the Atari
 
-OldSkoolCoder is running a series of tutorials walking through the usually very simple games in the book, and converting some of them to assembly language.
+OldSkoolCoder is running a series of tutorials walking through the very simple games in the book, and converting them to assembly language.
 
 That source is here:  https://github.com/OldSkoolCoder/Melbourne-House-Commodore-64-Games-Book
 
 The OldSkoolCoder Youtube channel is here:  https://www.youtube.com/channel/UCtWfJHX6gZSOizZDbwmOrdg/videos
 
-This repository will be the same programs ported to Atari.  (As I have time/interest).
+This repository will be the same programs ported to Atari.  (As I have time and interest).
 
 ---
 
@@ -15,22 +15,40 @@ The assembly for the Atari depends on my MADS include library here: https://gith
 
 ---
 
-**01 Paranoid**
+File naming...   Still deciding what BASIC files to keep for presentation. There is a lot of flotsam in the file lists.  Some of this would go away when I think up a standard.
 
-This draws a kaleidescope-like random patterns on the screen.
+**PORTING**
+The text of the BASIC files have several versions.  These are edited text that have not yet been entered into Atari BASIC.  REMark and several other commands are presented in their abbreviated form (e.g. R. and PL. for REM and PLOT, etc.):
 
-The "commentary" file is the C64 BASIC program with each line commented, and followed by an explanation of what the line is doing, and then followed by the equivalent Atari commands if applicable.
+- The "commentary" file is the C64 BASIC program with each line commented, and followed by an explanation of what the line is doing, and then followed by the equivalent Atari commands if applicable.
 
-The regular file for the Atari is the same as the commentary with the C64 commands removed.
+- The regular file for the Atari is the same as the commentary file with the C64 commands removed.
 
-The "stripped" file is the Atari version above with most of the extra commentary removed.
+- The "stripped" file is the Atari version above with most of the extra commentary removed.
 
-There are several striking differences between the Atari BASIC version and the C64 BASIC versions of the same program. Atari BASIC comes with commands to support graphics, which makes the code much more readable, and shorter, not to mention it runs far faster even though Atari BASIC uses floating point numbers for everything.  Atari BASIC's tokenization allows spaces to delimit commands and variables without wasting memory which also contributes to source readability. 
+**BASIC**
 
-WIP -- Deciding what to keep for presentation. ".LIS" files are listed from Atari BASIC.  ".LXL" files are listed from the nicer OSS BASIC XL which is 100% compatible with Atari BASIC and includes extra commands and other niceties such as upper/lower case formatted keywords.   
+Other files have been run through Atari BASIC and are the text output of listings from BASIC.
 
-After this, the next mission is to convert it to assembly. 
+- ".LIS" files are listed from Atari BASIC.  
+ 
+- ".LXL" files are listed from the nicer OSS BASIC XL which is 100% compatible with Atari BASIC and includes extra commands and other friendly niceties such as upper/lower case formatted keywords.   
+
+**Assembly**
+
+The assembly files have several versions, too:
+
+- The "C64andAt8" file is the original ported version with C64-specific code commented out where it occurs, and followed by the equivalent Atari assembly.
+
+- The "At8" version is the "C64andAt8" version with the commented C64 code removed.
 
 ---
 
-More to come.
+**01 Paranoid**
+
+This draws kaleidescope-like random patterns on the high res screen screen.
+
+---
+
+More to come.                          ? 
+
