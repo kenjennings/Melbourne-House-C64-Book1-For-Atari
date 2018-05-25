@@ -1,4 +1,4 @@
-0 Fast 
+0 Fast:Rem OSS BASIC XL 
 100 Graphics 8+16:Rem The +16 eliminates text window.
 105 Color 1:Rem And set the pixel drawing color.
 110 Setcolor 4,0,0:Rem Border black.
