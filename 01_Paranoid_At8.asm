@@ -38,9 +38,9 @@
 ;*                                                                             *
 ;*******************************************************************************
 
-GRAPHICSSRT   = $4000+96     ; 16384+96 ; Tweak actual display start. 
-; +96 is playing games with alignment, so the first 100 graphics lines are 
-; in the first 4K block, and the next are immediately sequential at the start 
+GRAPHICSSRT   = $4000+96     ; 16384+96 ; Tweak actual display start.
+; +96 is playing games with alignment, so the first 100 graphics lines are
+; in the first 4K block, and the next are immediately sequential at the start
 ; of the next 4K block.
 
 GRAPHICSSTART = $4000        ; 16384  ; Using this nearest exact page boundary
@@ -52,12 +52,12 @@ Y_START     = 49
 
 ;*******************************************************************************
 ;*                                                                             *
-;* Atari graphics are not hardcoded to specific pages in memory by ANTIC, so 
-;* the program must declare it. 
+;* Atari graphics are not hardcoded to specific pages in memory by ANTIC, so
+;* the program must declare it.
 ;*
-;* Since we set it up ourselves, we can duplicate the 200 scan lines that 
-;* the C64 uses (or MORE!) and use a direct plotting solution that will 
-;* certainly be faster than the generic OS routines. 
+;* Since we set it up ourselves, we can duplicate the 200 scan lines that
+;* the C64 uses (or MORE!) and use a direct plotting solution that will
+;* certainly be faster than the generic OS routines.
 ;*                                                                             *
 ;*******************************************************************************
 
@@ -89,10 +89,10 @@ DisplayList
 
 ;*******************************************************************************
 ;*                                                                             *
-;* Code Variables                                                              
+;* Code Variables
 ;*
-;* Capitalize on the Atari's ability to load anything anywhere in memory to 
-;* put all the working variables in page 0 and automagically initize them 
+;* Capitalize on the Atari's ability to load anything anywhere in memory to
+;* put all the working variables in page 0 and automagically initize them
 ;* when the program loads...
 ;*                                                                             *
 ;*******************************************************************************
@@ -154,12 +154,15 @@ MemEnd
 EvalDelta
 	.byte 0
 
-EvalValue 
+EvalValue
 	.byte 0
 
 EvalMax
 	.byte 0
 
+MaxPlotLoops
+	.byte 200
+	
 
 ;*******************************************************************************
 ;*                                                                             *
@@ -174,7 +177,7 @@ EvalMax
 ;*                                                                             *
 ;* Fill Video Memory Bank With A Value                                         *
 ;*
-;* This is done by looping through pages from a start to 
+;* This is done by looping through pages from a start to
 ;* a consecutive destination page, clearing the entire pages between.
 ;* Arguments must be 16-bit addresses, but the low byte values are discarded.
 ;*                                                                             *
@@ -183,7 +186,7 @@ EvalMax
 	.if :0<>2
 		.error "ClearMemPages: 2 arguments required (Start Address, End Address)"
 	.else
-		.if [>:StartAddress] > [>:EndAddress] 
+		.if [>:StartAddress] > [>:EndAddress]
 			.error "ClearMemPages: Start Address must be less than End Address"
 		.else
 			ldy #>[:StartAddress]
@@ -193,8 +196,8 @@ EvalMax
 	.endif
 .endm
 
-.macro FillVideoMemoryBank    
-	; Start Address of Bank
+
+.macro FillVideoMemoryBank
 	ClearMemPages GRAPHICSSTART, GRAPHICSSTART+8191
 .endm
 
@@ -206,7 +209,7 @@ EvalMax
 ;*******************************************************************************
 
 .macro EvaluateNextDeltaNumber DeltaVar
-	
+
 	;DX=INT(RND(1)*3-1) Results in a number of either -1, 0, +1
 	.if :0<>1
 		.error "EvaluateNextDeltaNumber: 1 argument required (Delta Variable)"
@@ -274,8 +277,8 @@ EvalMax
 		sta :wrdTarget+1
 	.endif
 .endm
-	
-	
+
+
 ;*******************************************************************************
 ;*                                                                             *
 ;* Divide the Source Word by eight, and store the result and the remainder     *
@@ -288,7 +291,7 @@ EvalMax
 	.else
 		lda :wrdSource
 		sta :bytResult
-	
+
 		lda :wrdSource+1
 		lsr         ; Divide by 2
 		ror :bytResult
@@ -308,9 +311,9 @@ EvalMax
 ;*                                                                             *
 ;* Apply the delta to X or Y
 ;*
-;* Revised version does not increment or decrement if the action will 
-;* exceed min/max values.  Detect limits first, negate the delta if 
-;* needed, then update the value.  
+;* Revised version does not increment or decrement if the action will
+;* exceed min/max values.  Detect limits first, negate the delta if
+;* needed, then update the value.
 ;*                                                                             *
 ;*******************************************************************************
 
@@ -318,7 +321,7 @@ EvalMax
 	.if :0<>3
 		.error "EvaluateDelta: 3 arguments required (Delta Address, Value Address, Max value Number)"
 	.else
-		ldx :MaxValue
+		ldx #:MaxValue
 		ldy :Value
 		lda :Delta
 
@@ -332,7 +335,7 @@ EvalMax
 
 ;*******************************************************************************
 ;*                                                                             *
-;* This is not a complicated program, so lots of RAM is superfluous.  
+;* This is not a complicated program, so lots of RAM is superfluous.
 ;* Just start code at a convenient place after DOS, DUP, etc.
 ;*                                                                             *
 ;*******************************************************************************
@@ -349,7 +352,7 @@ START
 	cld ; Mostly unnecessary.   Makes me feel better.
 
 	; setup the ANTIC display:
-	
+
 	lda #0     ; Turn off screen in case VBI happens
 	sta SDMCTL ; OS Shadow for DMA control
 
@@ -367,27 +370,28 @@ START
 	lda #COLOR_WHITE
 	sta COLOR2 ; Background color
 
-Line60              
+
+Line60
 	;FORI=8192TO8192+8*1024:POKEI,0:NEXT
 	; Clear screen memory.
 
 	FillVideoMemoryBank
 
-Line100             
+Line100
 	;X=79:Y=49:DX=INT(RND(1)*3-1):DY=INT(RND(1)*3-1):IFDX=0ANDDY=0THEN100
 
 	lda #0
-	
+
 	ldx #X_START
 	stx Prog_X
 	sta Prog_X + 1
-	    
+
 	ldy #Y_START
 	sty Prog_Y
 	sta Prog_Y + 1
 
 	EvaluateNextDeltaNumber Prog_DX
-	
+
 	EvaluateNextDeltaNumber Prog_DY
 
 	; check if all values are zero:
@@ -424,7 +428,7 @@ Line107
 	MultiplyWordByTwo Prog_X, Prog_X1
 
 	jsr Line1000 ; Plot X*2, Y*2
-	
+
 	SubtractNumberWord $00C7, Prog_Y1, Prog_Y1
 
 	SubtractNumberWord $013F, Prog_X1, Prog_X1
@@ -435,19 +439,19 @@ Line110
 	;X=X+DX:IFX<0ORX>159THENDX=-DX:GOTO110
 
 	EvaluateDelta Prog_DX, Prog_X, 159
-	
+
 Line115
 	;Y=Y+DY:IFY<0ORY>99THENDY=-DY:GOTO115
 
 	EvaluateDelta Prog_DY, Prog_Y, 99
-	
+
 Line120
 	;IFRND(1)>.9THENDX=INT(RND(1)*3-1)
 
 	lda RANDOM
 	cmp #225            ; 90% of 256
 	bcc Line130
-	
+
 	EvaluateNextDeltaNumber Prog_DX
 
 Line130
@@ -456,17 +460,17 @@ Line130
 	lda RANDOM
 	cmp #225            ; 90% of 256
 	bcc Line135
-	
+
 	EvaluateNextDeltaNumber Prog_DY
 
 Line135
 	;IFDX<>0ORDY<>0THEN105
-	
+
 	; check if all values are zero:
 	lda Prog_DX
 	ora Prog_DY
 	beq Line140
-	
+
 bLine135
 	jmp Line105
 
@@ -474,18 +478,30 @@ Line140
 	;DX=INT(RND(1)*3-1):DY=INT(RND(1)*3-1):IFDX=0ANDDY=0THEN140
 
 	EvaluateNextDeltaNumber Prog_DX
-	
+
 	EvaluateNextDeltaNumber Prog_DY
 
 	; check if all values are zero:
 	lda Prog_DX
 	ora Prog_DY
 	beq Line140
-	
+
 Line150
+	;GOTO105
+
+; Modifications... turn off CRT anti-burn-in automatic color cycling
 	lda #0
 	sta ATRACT
-	;GOTO105
+
+; Modifications... After a number of loops, reset the screen and start over.
+	dec MaxPlotLoops
+	bne ContinuePLotting ; Did not reach 0, keep looping.
+	
+	ldx #200             ; Reset counter
+	stx MaxPlotLoops
+	jmp Line60           ; Clear screen and restart
+
+ContinuePlotting
 	jmp Line105
 
 
@@ -494,8 +510,8 @@ Line1000
 	;YA=INT(Y1/8):YB=Y1-YA*8:XA=INT(X1/8):XB=X1-XA*8
 
 ; Logic above is for C64.
-; Atari screen memory is linear, so the pixel location 
-; determination is 
+; Atari screen memory is linear, so the pixel location
+; determination is
 ; Byte Address = GRAPHICSSRT + ( Y * 40 ) + INT( X / 8 )
 
 ; This is the INT( X / 8 ) part:
@@ -505,8 +521,8 @@ Line1000
 	ldy Prog_XB
 	lda Prog_PArray,y
 	sta Prog_XC
-	
-; This is the ( Y * 40 ) part. 
+
+; This is the ( Y * 40 ) part.
 ; Y * 40 is the same as (Y * 8) + (Y * 32)
 ; Y cannot be negative and Y cannot be greater than 199,
 ; so, we only need to start work with the low byte of Y.
@@ -524,7 +540,7 @@ Line1000
 
 	sta POINTADDRESS+1
 	pha ; save high byte *8 for later
-	
+
 	lda POINTADDRESS ; hold low byte *8 for later
 
 	asl POINTADDRESS
@@ -532,7 +548,7 @@ Line1000
 	asl POINTADDRESS
 	rol POINTADDRESS+1 ; * 32
 
-	clc ; Clear carry/borrow. 
+	clc ; Clear carry/borrow.
 	adc POINTADDRESS    ; Add the saved *8 in A to the *32 to get *40.
 	sta POINTADDRESS    ; save *40 Result
 	pla                 ; get high byte *8 from stack
@@ -541,7 +557,7 @@ Line1000
 
 ; And then add GRAPHICSSRT:
 
-	clc 
+	clc
 	lda #<GRAPHICSSRT
 	adc POINTADDRESS
 	sta POINTADDRESS
@@ -551,7 +567,7 @@ Line1000
 
 ; and now, add the INT( X / 8 ) offset on the line.
 
-	clc 
+	clc
 	lda Prog_XA
 	adc POINTADDRESS
 	sta POINTADDRESS
@@ -559,10 +575,10 @@ Line1000
 	inc POINTADDRESS+1 ; add not needed.  Just inc the high byte
 
 ; On the Atari (and Apple... and anything else with linear memory)
-; the address determination done above can be sped up and simplified 
-; significantly by using a lookup table of 200 words that point to 
+; the address determination done above can be sped up and simplified
+; significantly by using a lookup table of 200 words that point to
 ; the starting memory address for each Y position.
-; Of course, that's throwing 400 bytes of RAM at the implementation 
+; Of course, that's throwing 400 bytes of RAM at the implementation
 ; where the coded solution is much smaller (but slower).
 
 Line1005
@@ -582,7 +598,7 @@ Line1010
 ;*                                                                             *
 ;* Clear memory pages
 ;*
-;* loop through consecutive pages from a start page to 
+;* loop through consecutive pages from a start page to
 ;* an end page, clearing the entire pages, inclusive.
 ;*                                                                             *
 ;*******************************************************************************
@@ -590,7 +606,7 @@ ClearMemoryPages
 
 	sty MemStart+1
 	stx MemEnd
-	
+
 	lda #0
 	sta MemStart
 	tay
@@ -603,24 +619,24 @@ LoopBytes
 	ldx MemStart+1
 	cpx MemEnd
 	beq ExitClearMemoryPages
-	
+
 	inx
 	stx MemStart+1
 	bne LoopBytes
-	
+
 ExitClearMemoryPages
 	rts
 
 
 ;*******************************************************************************
 ;*                                                                             *
-;* Get a Delta Code from a Random Number 
-;* 
+;* Get a Delta Code from a Random Number
+;*
 ;* Return a value -1, 0, +1 ($FF, 0, $01)
-;* This is done by getting a random value for the lowest two bits in 
+;* This is done by getting a random value for the lowest two bits in
 ;* a byte.  This results in the values 0, 1, 2, 3.  But, we need only
 ;* three values.  So, if the fourth value is generated the routine will
-;* try again.  Inevitably, it will come up with a value within the 
+;* try again.  Inevitably, it will come up with a value within the
 ;* desired range.  Then decrement the 0, 1, 2 value producing -1, 0, 1.
 ;*
 ;* A  returns the random value
@@ -642,12 +658,12 @@ GetNextDeltaNumber
 ;*******************************************************************************
 ;*                                                                             *
 ;* Apply the delta to X or Y
-;* 
-;* Revised version does not increment or decrement if the action will 
-;* exceed min/max values.  
-;* 1) Detect value limits first, 
+;*
+;* Revised version does not increment or decrement if the action will
+;* exceed min/max values.
+;* 1) Detect value limits first,
 ;* 2) negate the delta if needed
-;* 3) then update the value per the delta. 
+;* 3) then update the value per the delta.
 ;*                                                                             *
 ;*******************************************************************************
 
@@ -655,9 +671,8 @@ ApplyDelta
 	stx EvalMax
 	sty EvalValue
 	sta EvalDelta
-	
+
 ReapplyDelta
-;	lda EvalDelta
 	beq bDeltaExit     ; Delta = Zero, do nothing.
 	bpl bDeltaPositive ; Delta = +1, go do that
 	                   ; Delta = -1, here
@@ -680,7 +695,7 @@ bNegateDelta
 	bpl bEnd_Delta      ; and save Delta.
 bDelta_Negative
 	lda #$FF            ; set Delta to negative...
-	
+
 bEnd_Delta
 	sta EvalDelta       ; and save Delta.
 	bne ReapplyDelta    ; Changed Delta, reapply Delta to Value if non-zero.
@@ -688,8 +703,8 @@ bEnd_Delta
 bDeltaExit              ; Done with Delta evaluation
 
 	ldy EvalValue       ; Pass these back to the caller.
-	lda EvalDelta       
-	
+	lda EvalDelta
+
 	rts
 
 	END
