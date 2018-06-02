@@ -41,7 +41,7 @@ The **".asm"** assembly files have several versions, too:
 
 - The **"C64andAt8"** file is the original ported version with C64-specific code commented out where it occurs and followed by the equivalent Atari assembly.
 
-- The **"At8"** version is the "C64andAt8" version with the commented C64 code removed leaving only the Atari-specific code.
+- The **"At8"** version is the "C64andAt8" version with the commented C64 code removed leaving only the Atari-specific code.  Logic, behavior improvements, and code modularization not present in the original may be included here. 
 
 ---
 
@@ -51,5 +51,5 @@ This draws kaleidescope-like random patterns on the high res screen screen.
 
 ---
 
-More to come.                          ? 
+More to come.                          ?
 
