@@ -55,13 +55,13 @@ Modifications in Atari port:
 
 - Delta handling logic was altered to just increment/decrement values rather than use signed math.
 
-- Console Keys do the following:
+Additionally, the console Keys do the following:
 
--- Option - Clear Screen (Atari800 emulator default F2)
+- Option - Clear Screen (Atari800 emulator default F2)
 
--- Select - Increment background color (Atari800 emulator default F3)
+- Select - Increment background color (Atari800 emulator default F3)
 
--- Start - Toggle plotting logic between OR, and EOR. (Atari800 emulator default F4)
+- Start - Toggle plotting logic between OR, and EOR. (Atari800 emulator default F4)
 
 ---
 
