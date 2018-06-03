@@ -49,6 +49,20 @@ The **".asm"** assembly files have several versions, too:
 
 This draws kaleidescope-like random patterns on the high res screen screen.
 
+Modifications in Atari port:
+
+- Some macros were optimized into re-usable functions which reduces final code size.
+
+- Delta handling logic was altered to just increment/decrement values rather than use signed math.
+
+- Console Keys do the following:
+
+-- Option - Clear Screen (Atari800 emulator default F2)
+
+-- Select - Increment background color (Atari800 emulator default F3)
+
+-- Start - Toggle plotting logic between OR, and EOR. (Atari800 emulator default F4)
+
 ---
 
 More to come.                          ?
