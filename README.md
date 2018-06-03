@@ -45,9 +45,16 @@ The **".asm"** assembly files have several versions, too:
 
 ---
 
-**01 Paranoid**
+**[01 Paranoid](https://github.com/kenjennings/Melbourne-House-C64-Book1-For-Atari/blob/master/README01Paranoid.md "Paranoid")**
 
 This draws kaleidescope-like random patterns on the high res screen screen.
+
+https://github.com/kenjennings/Melbourne-House-C64-Book1-For-Atari/blob/master/README01Paranoid.md
+
+[![AtariHBFITBScreen](https://github.com/kenjennings/Melbourne-House-C64-Book1-For-Atari
+/raw/master/01_Paranoid_At8.png)](#features)
+
+Video of the animation on YouTube: https://youtu.be/WLELDFDT3uM
 
 Modifications in Atari port:
 
