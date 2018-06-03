@@ -3,9 +3,9 @@ Work In Progress -- Porting the C64 code from the Melbourne House C64 Book 1 to 
 
 OldSkoolCoder is running a series of tutorials walking through the very simple games in the book, and converting them to assembly language.
 
-That source is here:  https://github.com/OldSkoolCoder/Melbourne-House-Commodore-64-Games-Book
+The C64 source is here:  https://github.com/OldSkoolCoder/Melbourne-House-Commodore-64-Games-Book
 
-The OldSkoolCoder Youtube channel is here:  https://www.youtube.com/channel/UCtWfJHX6gZSOizZDbwmOrdg/videos
+The OldSkoolCoder YouTube channel is here:  https://www.youtube.com/channel/UCtWfJHX6gZSOizZDbwmOrdg/videos
 
 This repository will be the same programs ported to Atari.  (As I have time and interest).
 
@@ -48,27 +48,6 @@ The **".asm"** assembly files have several versions, too:
 [01 Paranoid](https://github.com/kenjennings/Melbourne-House-C64-Book1-For-Atari/blob/master/README01Paranoid.md "Paranoid")
 
 This draws kaleidescope-like random patterns on the high res screen screen.
-
-https://github.com/kenjennings/Melbourne-House-C64-Book1-For-Atari/blob/master/README01Paranoid.md
-
-[![AtariHBFITBScreen](https://github.com/kenjennings/Melbourne-House-C64-Book1-For-Atari
-/raw/master/01_Paranoid_At8.png)](#features)
-
-Video of the animation on YouTube: https://youtu.be/WLELDFDT3uM
-
-Modifications in Atari port:
-
-- Some macros were optimized into re-usable functions which reduces final code size.
-
-- Delta handling logic was altered to just increment/decrement values rather than use signed math.
-
-Additionally, the console Keys do the following:
-
-- Option - Clear Screen (Atari800 emulator default F2)
-
-- Select - Increment background color (Atari800 emulator default F3)
-
-- Start - Toggle plotting logic between OR, and EOR. (Atari800 emulator default F4)
 
 ---
 
