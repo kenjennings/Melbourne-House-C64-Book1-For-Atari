@@ -2,8 +2,7 @@
 
 This draws kaleidescope-like random patterns on the high res screen screen.
 
-[![AtariParanoidScreen](https://github.com/kenjennings/Melbourne-House-C64-Book1-For-Atari
-/raw/master/01_Paranoid_At8.png)](#features)
+[![AtariParanoidScreen](https://github.com/kenjennings/Melbourne-House-C64-Book1-For-Atari/raw/master/01_Paranoid_At8.png)](#features)
 
 Video of the animation on YouTube: https://youtu.be/WLELDFDT3uM
 
