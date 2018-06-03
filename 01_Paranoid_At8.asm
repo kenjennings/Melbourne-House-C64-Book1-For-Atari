@@ -162,7 +162,10 @@ EvalMax
 
 MaxPlotLoops
 	.byte 200
-	
+
+PlotMode ; 0 = OR.  1 = EOR.   Press START to toggle.
+	.byte 0
+
 
 ;*******************************************************************************
 ;*                                                                             *
@@ -375,7 +378,7 @@ Line60
 	;FORI=8192TO8192+8*1024:POKEI,0:NEXT
 	; Clear screen memory.
 
-	FillVideoMemoryBank
+	jsr ClearScreen ; was macro FillVideoMemoryBank
 
 Line100
 	;X=79:Y=49:DX=INT(RND(1)*3-1):DY=INT(RND(1)*3-1):IFDX=0ANDDY=0THEN100
@@ -400,6 +403,9 @@ Line100
 	beq Line100
 
 Line105
+
+	jsr CheckConsoleKeys
+
 	;Y1=Y:X1=X:GOSUB1000:X1=319-X:GOSUB1000:Y1=199-Y:GOSUB1000:X1=X:GOSUB1000
 
 	CopyWord Prog_Y, Prog_Y1
@@ -494,12 +500,15 @@ Line150
 	sta ATRACT
 
 ; Modifications... After a number of loops, reset the screen and start over.
-	dec MaxPlotLoops
-	bne ContinuePLotting ; Did not reach 0, keep looping.
-	
-	ldx #200             ; Reset counter
-	stx MaxPlotLoops
-	jmp Line60           ; Clear screen and restart
+;	dec MaxPlotLoops
+;	bne ContinuePLotting ; Did not reach 0, keep looping.
+;
+;	ldx #200             ; Reset counter
+;	stx MaxPlotLoops
+;	jmp Line60           ; Clear screen and restart
+
+; Modification to the modification.
+; Use the console keys to change parameters.  OPTION clears screen.
 
 ContinuePlotting
 	jmp Line105
@@ -588,7 +597,17 @@ Line1010
 
 	ldy #0
 	lda (POINTADDRESS),y
+
+	ldx PlotMode
+	beq bDo_OR
+	; Do EOR
+	eor Prog_XC
+	jmp bPlotIt
+
+bDo_OR
 	ora Prog_XC
+
+bPlotIt
 	sta (POINTADDRESS),y
 
 	rts
@@ -704,6 +723,91 @@ bDeltaExit              ; Done with Delta evaluation
 
 	ldy EvalValue       ; Pass these back to the caller.
 	lda EvalDelta
+
+	rts
+
+
+;*******************************************************************************
+;*                                                                             *
+;* Clear the 8K of screen memory.
+;*
+;* Since this now can be called from two places, it deserves its own function.
+;*                                                                             *
+;*******************************************************************************
+
+ClearScreen
+
+	FillVideoMemoryBank
+
+	rts
+
+
+;*******************************************************************************
+;*                                                                             *
+;* Check Console keys.
+;*
+;* OPTION (default F2) = Clear screen
+;* SELECT (default F3) = Change Screen Color
+;* START  (default F4) = Toggle Pixel OR/EOR bitwise logic
+;*
+;* Nothing cleverly elegant happenning here.
+;* Check if each key is hit, if so, then loop until released.
+;* When released, then perform the action.
+;*                                                                             *
+;*******************************************************************************
+
+CheckConsoleKeys
+
+	lda CONSOL
+	and #CONSOLE_START
+	beq DO_START
+
+	lda CONSOL
+	and #CONSOLE_SELECT
+	beq DO_SELECT
+
+	lda CONSOL
+	and #CONSOLE_OPTION
+	beq DO_OPTION
+
+	rts
+
+DO_START ; Toggle plot mode.
+
+Release_Start
+	lda CONSOL
+	and #CONSOLE_START
+	beq Release_Start
+
+	inc PlotMode  ; increment mode.  0 = OR, 1 = EOR
+	lda PlotMode
+	and #$01      ; Only interested in the lowest bit.
+	sta PlotMode  ; re-save the mode
+
+	rts
+
+DO_SELECT ; change Screen Color.
+
+Release_Select
+	lda CONSOL
+	and #CONSOLE_SELECT
+	beq Release_Select
+
+	lda COLOR2  ; Get Background color
+	adc #$10	; Add 16 (next color)
+	ora #$0F    ; Make sure luminance bits maxed.
+	sta COLOR2  ; Save the new color.
+
+	rts
+
+DO_OPTION ; Clear Screen
+
+Release_Option
+	lda CONSOL
+	and #CONSOLE_OPTION
+	beq Release_Option
+
+	jsr ClearScreen
 
 	rts
 
