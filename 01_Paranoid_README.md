@@ -12,7 +12,7 @@ Modifications in Atari port:
 
 - Delta handling logic was altered to just increment/decrement values rather than use signed math.
 
-Additionally, the console Keys do the following:
+Additionally, the console keys do the following:
 
 - Option - Clear Screen (Atari800 emulator default F2)
 
