@@ -47,7 +47,7 @@ The **".asm"** assembly files have several versions, too:
 
 [01 Paranoid](https://github.com/kenjennings/Melbourne-House-C64-Book1-For-Atari/blob/master/01_Paranoid_README.md "Paranoid")
 
-This draws kaleidescope-like random patterns on the high res screen screen.
+This draws kaleidescope-like random patterns on the high resolution screen.
 
 ---
 
