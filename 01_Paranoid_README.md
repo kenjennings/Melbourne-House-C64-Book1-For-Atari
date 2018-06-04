@@ -1,6 +1,6 @@
 # Paranoid
 
-This draws kaleidescope-like random patterns on the high res screen screen.
+This draws kaleidescope-like random patterns on the high resolution screen.
 
 [![AtariParanoidScreen](https://github.com/kenjennings/Melbourne-House-C64-Book1-For-Atari/raw/master/01_Paranoid_At8.png)](#features)
 
