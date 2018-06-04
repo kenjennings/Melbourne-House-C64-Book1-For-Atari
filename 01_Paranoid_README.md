@@ -20,5 +20,6 @@ Additionally, the console keys do the following:
 
 - Start - Toggle plotting logic between OR, and EOR. (Atari800 emulator default F4)
  
- 
+---
+
 [Back to Home](https://github.com/kenjennings/Melbourne-House-C64-Book1-For-Atari/blob/master/README.md "Home") 
