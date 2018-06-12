@@ -92,7 +92,7 @@ DisplayList
 ;* Code Variables
 ;*
 ;* Capitalize on the Atari's ability to load anything anywhere in memory to
-;* put all the working variables in page 0 and automagically initize them
+;* put all the working variables in page 0 and automagically initialize them
 ;* when the program loads...
 ;*                                                                             *
 ;*******************************************************************************
