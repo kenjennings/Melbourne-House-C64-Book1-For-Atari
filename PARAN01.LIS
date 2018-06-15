@@ -1,7 +1,7 @@
 0 REM 0 BACKGROUND=1
 1 REM N/A. 
 2 REM "BACKGROUND" isn't a C64 BASIC command.
-3 REM A variable named "BACKGROUND" is never referenced.
+3 REM A variable named "BACKGROUND" is never referenced??
 10 REM 5 POKE55,255:POKE56,31
 11 REM N/A.
 12 REM This changes C64 end of BASIC/start of strings to reserve memory for graphics.
@@ -24,7 +24,7 @@
 51 REM N/A.
 52 REM Setup registers for graphics display.
 53 REM Already done on the Atari by the GRAPHICS command.
-60 REM 50 FORI=1024TO2024:POKEI,BA:NEXT
+60 REM 50 FORI=1024TO2024:POKEI,BA:NEXT:REM AH!  Here is the "BACKGROUND" variable.
 70 REM 60 FORI=8192TO8192+8*1024:POKEI,0:NEXT
 71 REM N/A.
 72 REM Clearing the screen. (Is BA assigned a value?)
