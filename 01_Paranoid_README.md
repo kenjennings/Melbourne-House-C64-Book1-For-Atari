@@ -20,7 +20,7 @@ These are porting "discussions" and may not actually be working if ENTER'd into 
 
 **Running BASIC**
 
-Working BASIC Code:
+Working BASIC Code that can be loaded with the ENTER command and then RUN:
 
 [PARAN01.LIS](https://github.com/kenjennings/Melbourne-House-C64-Book1-For-Atari/blob/master/PARAN01.LIS "PARAN01.LIS") Atari BASIC listing from working program.
 
@@ -36,9 +36,9 @@ Working BASIC Code:
 
 Modifications in Atari Assembly port:
 
-- Some macros were optimized into re-usable functions which reduces final code size.
+- Some macros are optimized into re-usable functions which reduces final code size.
 
-- Delta handling logic was altered to just increment/decrement values rather than use signed math.
+- Delta handling logic is altered to just increment/decrement values rather than use signed math.
 
 Additionally, the console keys do the following:
 
