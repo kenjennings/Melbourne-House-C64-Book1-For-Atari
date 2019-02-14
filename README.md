@@ -11,7 +11,13 @@ This repository will be the same programs ported to Atari.  (As I have time and 
 
 ---
 
-The assembly for the Atari depends on my MADS include library here: https://github.com/kenjennings/Atari-Mads-Includes.  
+Build with eclipse/WUDSN and MADS assembler.
+
+The assembly code for the Atari depends on my MADS include library here: https://github.com/kenjennings/Atari-Mads-Includes.  
+
+The MADS 6502 assembler is here: http://http://mads.atari8.info
+
+WUDSN can be found here: https://www.wudsn.com/index.php
 
 ---
 
